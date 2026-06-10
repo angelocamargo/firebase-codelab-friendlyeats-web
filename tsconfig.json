@@ -15,10 +15,10 @@
     "declaration": false,
     // "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "nodenext",
+    "moduleResolution":"node16",
     "importHelpers": true,
     "target": "ES2022",
-    "module":"nodenext",
+    "module":"node16",
     "useDefineForClassFields": false,
     "lib": [
       "ES2022",
