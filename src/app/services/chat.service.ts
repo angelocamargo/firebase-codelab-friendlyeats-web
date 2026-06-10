@@ -84,7 +84,15 @@ login() {
 }
 
   // Logout of Friendly Chat.
-  logout() {}
+  // Logout of Friendly Chat.
+logout() {
+    signOut(this.auth).then(() => {
+        this.router.navigate(['/', 'login'])
+        console.log('signed out');
+    }).catch((error) => {
+        console.log('sign out error: ' + error);
+    })
+}
 
   // Adds a text or image message to Cloud Firestore.
   addMessage = async (
