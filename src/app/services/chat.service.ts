@@ -66,7 +66,7 @@ export class ChatService {
   user$ = user(this.auth);
   currentUser: User | null = this.auth.currentUser;
   userSubscription: Subscription;
-  
+
   constructor() {
     this.userSubscription = this.user$.subscribe((aUser: User | null) => {
         this.currentUser = aUser;
@@ -74,7 +74,14 @@ export class ChatService {
   }
 
   // Login Friendly Chat.
-  login() {}
+ // Signs-in Friendly Chat.
+login() {
+    signInWithPopup(this.auth, this.provider).then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        this.router.navigate(['/', 'chat']);
+        return credential;
+    })
+}
 
   // Logout of Friendly Chat.
   logout() {}
