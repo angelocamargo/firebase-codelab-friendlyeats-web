@@ -2,8 +2,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    // "baseUrl": "./",
-    "rootDir": "./src",
+    "baseUrl": "./",
+    // "rootDir": "./src",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -13,12 +13,12 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
-    // "downlevelIteration": true,
+    "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution":"node16",
+    "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
-    "module":"node16",
+    "module":"ES2022",
     "useDefineForClassFields": false,
     "lib": [
       "ES2022",
