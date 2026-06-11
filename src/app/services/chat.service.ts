@@ -73,26 +73,24 @@ export class ChatService {
     });
   }
 
-  // Login Friendly Chat.
- // Signs-in Friendly Chat.
-login() {
+  // Signs-in Friendly Chat.
+  login() {
     signInWithPopup(this.auth, this.provider).then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         this.router.navigate(['/', 'chat']);
         return credential;
     })
-}
+  }
 
   // Logout of Friendly Chat.
-  // Logout of Friendly Chat.
-logout() {
+  logout() {
     signOut(this.auth).then(() => {
         this.router.navigate(['/', 'login'])
         console.log('signed out');
     }).catch((error) => {
         console.log('sign out error: ' + error);
     })
-}
+  }
 
   // Adds a text or image message to Cloud Firestore.
   addMessage = async (
@@ -141,10 +139,13 @@ logout() {
     return this.addMessage(messageText, null);
   };
 
-  // Loads chat messages history and listens for upcoming ones.
+  // Loads chat message history and listens for upcoming ones.
   loadMessages = () => {
-    return null as unknown;
-  };
+    // Create the query to load the last 12 messages and listen for new ones.
+    const recentMessagesQuery = query(collection(this.firestore, 'messages'), orderBy('timestamp', 'desc'), limit(12));
+    // Start listening to the query.
+    return collectionData(recentMessagesQuery);
+  }
 
   // Saves a new message containing an image in Firebase.
   // This first saves the image in Firebase storage.
